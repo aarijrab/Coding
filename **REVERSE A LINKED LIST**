@@ -1,0 +1,16 @@
+Node* reverse(Node *head) 
+        {
+            Node * prev = NULL;
+            Node * current = head;
+            Node * next;
+            
+            while (current != NULL) 
+            { 
+                next = current->next;     // storing next node
+                current->next = prev;     // linking current node to previous
+                prev = current;           // updating prev
+                current = next;           // updating current
+            }
+            
+            return prev; 
+        } 
