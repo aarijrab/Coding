@@ -1,0 +1,19 @@
+Node *sortedInsert(struct Node* head, int data) {
+        // Code here
+        Node *current;
+        Node *temp=new Node(data);
+        
+       if(head==NULL || head->data > data) {
+           temp->next=head;
+           return head;
+       }
+       else {
+           current=head;
+           if(current->next!=NULL && current->next->data < temp->data) {
+               current=current->next;
+           }
+           temp->next = current->next;
+        current->next = temp;
+       }
+       return head;
+    }
