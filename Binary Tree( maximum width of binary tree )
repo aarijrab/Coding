@@ -1,0 +1,51 @@
+class Solution {
+  public:
+    // Function to get height of a tree.
+    int height(Node* node) {
+        // if node is null, we return 0.
+        if (node == NULL) return 0;
+
+        // else we call the function height recursively for left and right
+        // subtrees of the parent node and store their maximum.
+        else {
+            int lHeight = height(node->left);
+            int rHeight = height(node->right);
+            return (lHeight > rHeight) ? (lHeight + 1) : (rHeight + 1);
+        }
+    }
+
+  public:
+    // Function to get width of a given level.
+    int getWidth(Node* root, int level) {
+
+        if (root == NULL) return 0;
+
+        // if level is 1, we return 1.
+        if (level == 1) return 1;
+
+        // else if it is greater than one, we call the getWidth function
+        // recursively for left and right subtrees of parent node and add them.
+        else if (level > 1)
+            return getWidth(root->left, level - 1) +
+                   getWidth(root->right, level - 1);
+    }
+
+  public:
+    // Function to get the maximum width of a binary tree.
+    int getMaxWidth(Node* root) {
+        int maxWidth = 0;
+        int width;
+        int h = height(root);
+        int i;
+
+        // getting width of each level and comparing the width
+        // with maximum width so far.
+        for (i = 1; i <= h; i++) {
+            width = getWidth(root, i);
+            if (width > maxWidth) maxWidth = width;
+        }
+
+        // returning the maximum width.
+        return maxWidth;
+    }
+};
