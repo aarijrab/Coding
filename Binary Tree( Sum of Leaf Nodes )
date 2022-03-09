@@ -1,0 +1,17 @@
+int sumleaf(Node *root,int &sum) {
+    if(root==NULL) return 0;
+    if(root->left==NULL && root->right==NULL) {
+        sum+=root->data;
+    }
+        sumleaf(root->left,sum);
+        sumleaf(root->right,sum);
+        return sum;
+}
+
+
+int sumLeaf(Node* root)
+{
+    // Code here
+    int sum=0;
+    return sumleaf(root,sum);
+}
