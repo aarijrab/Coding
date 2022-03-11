@@ -1,0 +1,12 @@
+int chocolates(int arr[], int n)
+{
+    // Complete the function
+    int left=0;
+    int right=n-1;
+    while(left<=right-1 && n>1) {
+        if(arr[left]>arr[right]) left++;
+        else  right--;
+        n--;
+    }
+    return arr[left];
+}
