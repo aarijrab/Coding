@@ -1,0 +1,22 @@
+vector<int> bfsOfGraph(int V, vector<int> adj[]) {
+        // Code here
+        vector<bool>vis(V,false);
+    vector<int>res;
+    int s=0;
+    vis[s]={0};
+    queue<int>q;
+    q.push(s);
+    while(!q.empty()) {
+        int td=q.front();
+        res.push_back(td);
+        q.pop();
+        for(int t: adj[td]) {
+            if(!vis[t] {
+                vis[t]=true;
+                q.push(t);
+            }
+        }
+    }
+    
+    return res;
+    }
