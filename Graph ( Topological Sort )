@@ -1,0 +1,24 @@
+	void topo(vector<int>adj[], int u, bool visited[],stack<int>&s) {
+	    vector<int>in(u,0);
+	    vector<int>ans;
+	    for(int i=0;i<=u-1;i++) {
+	        for(auto x: adj[i]) {
+	            in[x]++;
+	        }
+	    }
+	    queue<int>q;
+	    for(int i=0;i<=u-1;i++) {
+	       if(in[x]==0) q.push(i);
+	    }
+	    while(!q.empty()) {
+	        int td=q.front();
+	        q.pop();
+	        ans.push_back(td);
+	        for(auto x:adj[td]) {
+	            in[x]--;
+	            if(in[x]==0)   q.push(x);
+	        }
+	    }
+	    return ans;
+	}
+	
